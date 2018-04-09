@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <img src="/images/calendar.png" width="20px"/> 
+      <time datetime="{{page.date | date: date_to_xmlschema}}" itemprop="datePublished" class="post-meta__date date">{{page.date | date: "%F"}}</time>  
+         
+      <span id="busuanzi_container_page_pv"> | 阅读：<span id="busuanzi_value_page_pv"></span>次</span>
+    </p>
+    </div>
+  </header>
+
+  <section class="post">
+    {{ content }}
+<ul class="pager">
+        {% if page.previous.url %}
+        <li class="previous">
+            <a href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">上一篇：  <span>{{page.previous.title}}</span>
+            </a>
+        </li>
+        {% endif %}
+        {% if page.next.url %}
+        <li class="next">
+            <a href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">下一篇：  <span>{{page.next.title}}</span>
+            </a>
+        </li>
+        {% endif %}
+</ul>
+  </section>
+</article>
+
+
+{% include comments.html %}
+
+<body>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+       <div id="comment"></div>
+<script>
+    var valine = new Valine();
+    valine.init({
+        el:'#comment',
+        appId:'DrWVXEsmCmbHUAUvui1M4sI5-gzGzoHsz',
+        appKey:'uxsJ6eylx71VFm2oqHHlE4ey',
+        path: window.location.pathname,
+        verify:false,
+        placeholder:'leave a comment',
+        avatar:'identicon' 
+    })
+</script>
+</body>

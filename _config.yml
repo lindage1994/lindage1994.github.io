@@ -1,0 +1,62 @@
+# Basic
+title: 林晒
+subtitle: 
+description: time for a true display of skill！
+# 头像里面的标题
+avatarTitle: iahsnil
+# 头像里面的描述
+avatarDesc:  mid kill god
+url: 
+
+# Comment
+comment:
+    # disqus: leopard
+    # duoshuo: leopard 
+    # cloudTie: leopard
+
+# Social
+social:
+    weibo: lindage1994
+    github: lindage1994
+    # twitter: 
+    mail: lindage1994@126.com
+
+# 百度统计 
+# 使用博客模板请去掉或者更换 id 
+baidu:
+    id: cd205c44f221b51489bce574a1aec843   
+
+# Google Analytics
+# 使用博客模板请去掉或者更换 id
+ga:
+    id:    
+    host:  
+
+
+
+permalink: /:year/:month/:title/
+# Format
+highlighter: rouge
+
+textColor: #FF0000
+
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: clear
+
+# The blog button should not be removed.
+blog_button:
+    title: 主页
+
+# Navigation buttons in the front page.s
+nav:
+    - {title: 文章, description: Archive, url: '/archive'}   
+    - {title: 分类, description: Category, url: '/tags'}      
+    - {title: 关于, description: About me, url: '/about'}      
+    
+
+# Pagination
+gems: [jekyll-paginate]
+paginate: 20
+paginate_path: "page/:num/"
+
+
