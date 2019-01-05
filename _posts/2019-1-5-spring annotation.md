@@ -1,11 +1,12 @@
-﻿---
+---
 layout: post
 title: "spring注解分析"
-date: 2019-01-05description: "spring常用注解"
+date: 2018-05-12
+description: "spring常用注解"
 tag: spring
 ---
 
-  >Spring中的注解大概可以分为两大类：
+>Spring中的注解大概可以分为两大类：
 
 - spring的bean容器相关的注解，或者说bean工厂相关的注解；
 - springmvc相关的注解。
