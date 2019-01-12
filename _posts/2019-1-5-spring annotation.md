@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "spring注解分析"
-date: 2018-01-05
+date: 2019-01-05
 description: "spring常用注解"
 tag: spring
 ---
@@ -16,11 +16,11 @@ spring的bean容器相关的注解，@Required， @Autowired, @PostConstruct,@Pr
 
 springmvc相关的注解有：@Controller, @RequestMapping, @RequestParam， @ResponseBody等等。
 
-==@Required==
+>@Required
 
 用在set方法上，一旦用了这个注解，那么容器在初始化bean的时候必须要进行set，也就是说必须对这个值进行依赖注入。
 
-==@AutoWired==
+>@AutoWired
 
 注解是按照类型（byType）装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它的required属性为false。如果我们想使用按照名称（byName）来装配，可以结合@Qualifier注解一起使用。如下：
 ```
@@ -30,7 +30,7 @@ public class UserServiceImpl {
     private UserMapper userMapper;
 }
 ```
-==@Resource==
+>@Resource
 
 默认按照ByName自动注入，由J2EE提供，需要导入包javax.annotation.Resource。@Resource有两个重要的属性：name和type，而Spring将@Resource注解的name属性解析为bean的名字，而type属性则解析为bean的类型。所以，如果使用name属性，则使用byName的自动注入策略，而使用type属性时则使用byType自动注入策略。如果既不制定name也不制定type属性，这时将通过反射机制使用byName自动注入策略。
 
@@ -54,7 +54,7 @@ public class UserServiceImpl {
 
 @Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。
 
-==@Qualifier==
+>@Qualifier
 
 限定描述符，用于细粒度选择候选者；
 
@@ -90,11 +90,11 @@ public class ConsumerController {
 
 }
 ```
-==@Component==
+@Component
 
 @Component是所有受Spring 管理组件的通用形式，@Component注解可以放在类的头上，@Component不推荐使用。
 
-==@Controller==
+@Controller
 
 
 ```
@@ -110,7 +110,7 @@ public class UserController extends BaseController{
 
 这里的UserController还使用了@Scope注解，@Scope("prototype")表示将Controller的范围声明为原型，可以利用容器的scope="prototype"来保证每一个请求有一个单独的Controller来处理。spring 默认scope是单例模式(scope="singleton")，这样只会创建一个Controller对象，每次访问都是同一Controller对象，数据不安全，scope="prototype" 可以保证当有请求的时候都创建一个Action对象。
 
-==@Service==
+>@Service
 
 @Service对应的是业务层Bean，例如：
 
@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
 ```
 注意：在Action声明的"userService"变量的类型必须是"UserServiceImpl"或者是其父类"UserService"，否则由于类型不一致而无法注入。Action要使用UserServiceImpl时，就不用主动去创建UserServiceImpl的实例了，创建UserServiceImpl实例已经交给Spring来做了，Spring把创建好的UserServiceImpl实例给Action，Action拿到就可以直接用了。Action由原来的主动创建UserServiceImpl实例后就可以马上使用，变成了被动等待由Spring创建好UserServiceImpl实例之后再注入给Action，Action才能够使用。这说明Action对"UserServiceImpl"类的“控制权”已经被“反转”了，原来主动权在自己手上，自己要使用"UserServiceImpl"类的实例，自己主动去new一个出来马上就可以使用了，但现在自己不能主动去new "UserServiceImpl"类的实例，new "UserServiceImpl"类的实例的权力已经被Spring拿走了，只有Spring才能够new "UserServiceImpl"类的实例，而Action只能等Spring创建好"UserServiceImpl"类的实例后，再“恳求”Spring把创建好的"UserServiceImpl"类的实例给他，这样他才能够使用"UserServiceImpl"，这就是Spring核心思想“控制反转”，也叫“依赖注入”，“依赖注入”也很好理解，Action需要使用UserServiceImpl干活，那么就是对UserServiceImpl产生了依赖，Spring把Acion需要依赖的UserServiceImpl注入(也就是“给”)给Action，这就是所谓的“依赖注入”。对Action而言，Action依赖什么东西，就请求Spring注入给他，对Spring而言，Action需要什么，Spring就主动注入给他。
 
-==@Repository==
+>@Repository
 
 @Repository对应数据访问层Bean
 
@@ -160,7 +160,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> {
 > 在SpringMVC 中，控制器Controller 负责处理由DispatcherServlet 分发的请求，它把用户请求的数据经过业务处理层处理之后封装成一个Model ，然后再把该Model 返回给对应的View 进行展示。在SpringMVC 中提供了一个非常简便的定义Controller 的方法，你无需继承特定的类或实现特定的接口，只需使用@Controller 标记一个类是Controller ，然后使用@RequestMapping 和@RequestParam 等一些注解用以定义URL 请求和Controller 方法之间的映射，这样的Controller 就能被外界访问到。此外Controller 不会直接依赖于HttpServletRequest 和HttpServletResponse 等HttpServlet 对象，它们可以通过Controller 的方法参数灵活的获取到。
 
 
-==@RequestMapping==
+>@RequestMapping
 
 - 使用URI模板
 
