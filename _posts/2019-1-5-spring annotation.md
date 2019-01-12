@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "spring注解分析"
-date: 2018-05-12
+date: 2018-01-05
 description: "spring常用注解"
 tag: spring
 ---
@@ -27,7 +27,7 @@ springmvc相关的注解有：@Controller, @RequestMapping, @RequestParam， @Re
 public class UserServiceImpl {
     @Autowired(required = false)
     @Qualifier("userMapper")
-    private UserMapper userMapper; 
+    private UserMapper userMapper;
 }
 ```
 ==@Resource==
@@ -39,7 +39,7 @@ public class UserServiceImpl {
     // 下面两种@Resource只要使用一种即可
     @Resource(name="userMapper")
     private UserMapper userMapper; // 用于属性
-    
+
     @Resource(name="userMapper")
     public void setUserMapper(UserMapper userMapper) { // 用于属性的setter方法上
         this.userMapper = userMapper;
@@ -54,7 +54,7 @@ public class UserServiceImpl {
 
 @Resource的作用相当于@Autowired，只不过@Autowired按照byType自动注入。
 
-==@Qualifier== 
+==@Qualifier==
 
 限定描述符，用于细粒度选择候选者；
 
@@ -141,7 +141,7 @@ public class UserDaoImpl extends BaseDaoImpl<User> {
 @Configuration把一个类作为一个IoC容器，它的某个方法头上如果注册了@Bean，就会作为这个Spring容器中的Bean。
 - @Scope注解 作用域
 - @Lazy(true) 表示延迟初始化
-- @Service用于标注业务层组件、 
+- @Service用于标注业务层组件、
 - @Controller用于标注控制层组件（如struts中的action）
 - @Repository用于标注数据访问组件，即DAO组件。
 - @Component泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
@@ -212,7 +212,7 @@ public class MyController {
     public String testCookieValue( @CookieValue ( "hello" ) String cookieValue, @CookieValue String hello) {
        System. out .println(cookieValue + "-----------" + hello);
        return "cookieValue" ;
-    } 
+    }
 在上面的代码中我们使用@CookieValue 绑定了cookie 的值到方法参数上。上面一共绑定了两个参数，一个是明确指定要绑定的是名称为hello 的cookie 的值，一个是没有指定。使用没有指定的形式的规则和@PathVariable、@RequestParam 的规则是一样的，即在debug 编译模式下将自动获取跟方法参数名同名的cookie 值。
 
 （四）使用 @RequestHeader 注解绑定 HttpServletRequest 头信息到Controller 方法参数
@@ -222,7 +222,7 @@ public class MyController {
 public String testRequestHeader( @RequestHeader ( "Host" ) String hostAddr, @RequestHeader String Host, @RequestHeader String host ) {
     System. out .println(hostAddr + "-----" + Host + "-----" + host );
     return "requestHeader" ;
-} 
+}
 在上面的代码中我们使用了 @RequestHeader 绑定了 HttpServletRequest 请求头 host 到Controller 的方法参数。上面方法的三个参数都将会赋予同一个值，由此我们可以知道在绑定请求头参数到方法参数的时候规则和 @PathVariable 、 @RequestParam 以及 @CookieValue 是一样的，即没有指定绑定哪个参数到方法参数的时候，在 debug 编译模式下将使用方法参数名作为需要绑定的参数。但是有一点 @RequestHeader 跟另外三种绑定方式是不一样的，那就是在使用 @RequestHeader 的时候是大小写不敏感的，即 @RequestHeader(“Host”) 和 @RequestHeader(“host”) 绑定的都是 Host 头信息。记住在 @PathVariable 、 @RequestParam 和 @CookieValue 中都是大小写敏感的。
 
 （五） @RequestMapping 的一些高级应用
@@ -235,7 +235,7 @@ public String testRequestHeader( @RequestHeader ( "Host" ) String hostAddr, @Req
     public String testParams() {
        System. out .println( "test Params..........." );
        return "testParams" ;
-    } 
+    }
 在上面的代码中我们用@RequestMapping 的params 属性指定了三个参数，这些参数都是针对请求参数而言的，它们分别表示参数param1 的值必须等于value1 ，参数param2 必须存在，值无所谓，参数param3 必须不存在，只有当请求/testParams.do 并且满足指定的三个参数条件的时候才能访问到该方法。所以当请求/testParams.do?param1=value1&param2=value2 的时候能够正确访问到该testParams 方法，当请求/testParams.do?param1=value1&param2=value2&param3=value3 的时候就不能够正常的访问到该方法，因为在@RequestMapping 的params 参数里面指定了参数param3 是不能存在的。
 
 2.method属性
@@ -244,7 +244,7 @@ public String testRequestHeader( @RequestHeader ( "Host" ) String hostAddr, @Req
     @RequestMapping (value= "testMethod" , method={RequestMethod. GET , RequestMethod. DELETE })
     public String testMethod() {
        return "method" ;
-    } 
+    }
 在上面的代码中就使用method 参数限制了以GET 或DELETE 方法请求/testMethod.do 的时候才能访问到该Controller 的testMethod 方法。
 
 3.headers属性
@@ -344,7 +344,7 @@ public class MyController {
        System. out .println( "-------------intValue---------------" );
        return 10;
     }
-   
+
     @RequestMapping ( "sayHello" )
     public void sayHello(Map<String, Object> map, @ModelAttribute ( "hello" ) String hello, @ModelAttribute ( "intValue" ) int num, @ModelAttribute ( "user2" ) User user, Writer writer, HttpServletRequest request) throws IOException {
        map.put( "stringValue" , "String" );
@@ -380,9 +380,3 @@ intValue
 stringValue
 
 当 @ModelAttribute 标记在处理器方法参数上的时候，表示该参数的值将从模型或者 Session 中取对应名称的属性值，该名称可以通过 @ModelAttribute(“attributeName”) 来指定，若未指定，则使用参数类型的类名称（首字母小写）作为属性名称。
-
-
-
-
-
-
