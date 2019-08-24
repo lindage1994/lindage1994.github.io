@@ -4,6 +4,7 @@ title: "design_pattern_UML"
 date: 2019-01-13
 description: "设计模式之UML"
 tag: design_pattern
+comments: true
 ---
 ### uml简介
 
