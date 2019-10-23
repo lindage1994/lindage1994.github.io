@@ -3,7 +3,7 @@ layout: post
 title: "spring注解分析"
 date: 2019-01-05
 description: "spring常用注解"
-tag: spring
+tag: [java,spring]
 comments: true
 ---
 
@@ -13,7 +13,7 @@ comments: true
 - springmvc相关的注解。
 
 
-spring的bean容器相关的注解，@Required， @Autowired, @PostConstruct,@PreDestory，还有Spring3.0开始支持的JSR-330标准javax.inject.*中的注解(@Inject, @Named, @Qualifier, @Provider, @Scope, @Singleton).
+spring的bean容器相关的注解，@Required， @Autowired, @PostConstruct,@PreDestory，还有Spring3.0开始支持的JSR-330标准javax.inject.* 中的注解(@Inject, @Named, @Qualifier, @Provider, @Scope, @Singleton).
 
 springmvc相关的注解有：@Controller, @RequestMapping, @RequestParam， @ResponseBody等等。
 
