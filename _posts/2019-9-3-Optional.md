@@ -2,6 +2,7 @@
 layout: post
 title: "Optional"
 date: 2019-09-03
+excerpt: "使用Optional来处理null"
 description: "使用Optional来处理null"
 tag: [Optional, null]
 comments: true

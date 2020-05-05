@@ -2,6 +2,7 @@
 layout: post
 title: "spring注解分析"
 date: 2019-01-05
+excerpt: "日常瞎j8写"
 description: "spring常用注解"
 tag: [java,spring]
 comments: true

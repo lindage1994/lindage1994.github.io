@@ -3,6 +3,7 @@ layout: post
 title: "design_pattern_introduction"
 date: 2019-01-1
 description: "设计模式简介"
+excerpt: "常见的设计模式"
 tag: [design_pattern]
 comments: true
 ---

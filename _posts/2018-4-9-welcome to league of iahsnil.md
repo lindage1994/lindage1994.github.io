@@ -2,6 +2,7 @@
 layout: post
 title: "welcome to league of iahsnil"
 date: 2018-04-09 
+excerpt: "follow your heart"
 description: "follow your heart"
 tag: 随笔
 ---

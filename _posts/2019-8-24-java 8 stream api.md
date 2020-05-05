@@ -2,7 +2,8 @@
 layout: post
 title: "java 8 stream api"
 date: 2019-08-24
-description: "设计模式简介"
+description: "java 8 stream api"
+excerpt: "java 8 stream 操作简明教程"
 tag: [java8, stream api]
 comments: true
 ---
@@ -71,7 +72,7 @@ int sum = widgets.stream()
 .filter(w -> w.getColor() == RED)
  .mapToInt(w -> w.getWeight())
  .sum();
- ```
+```
 stream() 获取当前小物件的 source，filter 和 mapToInt 为 intermediate 操作，进行数据筛选和转换，最后一个 sum() 为 terminal 操作，对符合条件的全部小物件作重量求和。
 
 ## 流的使用详解
@@ -155,7 +156,7 @@ anyMatch、 allMatch、 noneMatch、 findFirst、 findAny、 limit
 List<String> output = wordList.stream().
 map(String::toUpperCase).
 collect(Collectors.toList());
-```
+ ```
 这段代码把所有的单词转换为大写。
 
 ##### 平方数
@@ -198,7 +199,7 @@ List<String> output = reader.lines().
  flatMap(line -> Stream.of(line.split(REGEXP))).
  filter(word -> word.length() > 0).
  collect(Collectors.toList());
- ```
+```
 这段代码首先把每行的单词用 flatMap 整理到新的 Stream，然后保留长度不为 0 的，就是整篇文章中的全部单词了。
 
 ##### forEach
@@ -211,7 +212,7 @@ forEach 方法接收一个 Lambda 表达式，然后在 Stream 的每一个元�
 roster.stream()
  .filter(p -> p.getGender() == Person.Sex.MALE)
  .forEach(p -> System.out.println(p.getName()));
- ```
+```
  ```java
 // Pre-Java 8
 for (Person p : roster) {
@@ -219,7 +220,7 @@ for (Person p : roster) {
  System.out.println(p.getName());
  }
 }
-```
+ ```
 对一个人员集合遍历，找出男性并打印姓名。可以看出来，forEach 是为 Lambda 而设计的，保持了最紧凑的风格。而且 Lambda 表达式本身是可以重用的，非常方便。当需要为多核系统优化时，可以 parallelStream().forEach()，只是此时原有元素的次序没法保证，并行的情况下将改变串行时操作的行为，此时 forEach 本身的实现不需要调整，而 Java8 以前的 for 循环 code 可能需要加入额外的多线程逻辑。
 
 但一般认为，forEach 和常规 for 循环的差异不涉及到性能，它们仅仅是函数式风格与传统 Java 风格的差别。
@@ -238,7 +239,7 @@ Stream.of("one", "two", "three", "four")
  .map(String::toUpperCase)
  .peek(e -> System.out.println("Mapped value: " + e))
  .collect(Collectors.toList());
- ```
+```
 forEach 不能修改自己包含的本地变量值，也不能用 break/return 之类的关键字提前结束循环。
 
 ##### findFirst
@@ -270,7 +271,7 @@ return Optional.ofNullable(text).map(String::length).orElse(-1);
  // Pre-Java 8
 // return if (text != null) ? text.length() : -1;
  };
- ```
+```
 在更复杂的 if (xx != null) 的情况中，使用 Optional 代码的可读性更好，而且它提供的是编译时检查，能极大的降低 NPE 这种 Runtime Exception 对程序的影响，或者迫使程序员更早的在编码阶段处理空值问题，而不是留到运行时再发现和调试。
 
 Stream 中的 findAny、max/min、reduce 等方法等返回 Optional 值。还有例如 IntStream.average() 返回 OptionalDouble 等等。
@@ -304,7 +305,7 @@ Stream 中的 findAny、max/min、reduce 等方法等返回 Optional 值。还�
 concat = Stream.of("a", "B", "c", "D", "e", "F").
  filter(x -> x.compareTo("Z") > 0).
  reduce("", String::concat);
- ```
+```
 上面代码例如第一个示例的 reduce()，第一个参数（空白字符）即为起始值，第二个参数（String::concat）为 BinaryOperator。这类有起始值的 reduce() 都返回具体的对象。而对于第四个示例没有起始值的 reduce()，由于可能没有足够的元素，返回的是 Optional，请留意这个区别。
 
 #### limit/skip

@@ -2,6 +2,7 @@
 layout: post
 title: "markdown"
 date: 2019-09-03
+excerpt: "日常瞎j8写"
 description: "Markdown基本语法"
 tag: [markdown,tools]
 comments: true
@@ -41,6 +42,7 @@ n个...
 >>这是引用的内容
 ```
 >这是引用的内容
+>
 >>这是引用的内容
 
 ## 四、分割线
@@ -190,7 +192,7 @@ title可加可不加
 
 ## 十、流程图
 ```
-```flow
+​```flow
 st=>start: 开始
 op=>operation: My Operation
 cond=>condition: Yes or No?

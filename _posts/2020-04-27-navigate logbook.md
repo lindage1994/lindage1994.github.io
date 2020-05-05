@@ -2,6 +2,7 @@
 layout: post
 title: "航海日志"
 date: 2020-04-04
+excerpt: "记录工作和生活"
 description: "记录工作和生活"
 tag: [log]
 comments: true
