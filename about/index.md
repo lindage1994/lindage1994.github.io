@@ -6,7 +6,7 @@ date: 2016-03-21
 comments: false
 ---
     
-<center><a href="http://iahsnil.xyz"><b>Moon</b></a> is a minimal, one column jekyll theme.</center>
+<center><a href="https://lindage1994.github.io"><b>Moon</b></a> is a minimal, one column jekyll theme.</center>
 
 ## 简介
 * 从小王子的B-612行星到小男孩捡鹅卵石和贝壳的真理的海滩
@@ -18,7 +18,6 @@ comments: false
 * 从浩瀚无垠太平洋的凶猛鲨鱼到荒郊野岭井冲的秃毛野鸡
 * 我都不感兴趣吧！ 
 * ***搬运工·艺术家·胖子***
-* MathJax support
 
 ## 关于我
 * 我也一直在思考吧，我也不知道。
