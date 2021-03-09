@@ -31,7 +31,7 @@ comments: true
 
 - 运行 redis 镜像
 
-​      `docker run -itd --name redis-test -p 6379:6379 redis`
+​      `docker run -itd --restart always --name local-redis -p 6379:6379 redis`
 
 - 进入命令行
 
